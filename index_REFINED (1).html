@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Your Digital Product in 90 Minutes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600&family=Inter:wght@300;400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --white: #ffffff;
+            --page: #f8f7f5;
+            --border: #e4e2de;
+            --border-dk: #ceccc7;
+            --text: #0f0f0f;
+            --text-sec: #58554f;
+            --text-hint: #999590;
+            --accent: #0a6b52;
+            --accent-lt: #e6f4f0;
+            --ga: #4fc3f7;
+            --gb: #26e5a0;
+            --gc: #a8ff3e;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--page);
+            color: var(--text);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        /* Gradient Text */
+        .gt {
+            background: linear-gradient(90deg, var(--ga), var(--gb), var(--gc));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Gradient Fill */
+        .gb-fill {
+            background: linear-gradient(90deg, var(--ga), var(--gc));
+        }
+
+        /* Section Label */
+        .sec-lbl {
+            font-size: 15px;
+            letter-spacing: 0.26em;
+            text-transform: uppercase;
+            color: var(--text-hint);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sec-lbl::before {
+            content: '';
+            display: inline-block;
+            width: 18px;
+            height: 1px;
+            background: var(--border-dk);
+        }
+
+        /* Section Heading */
+        .sec-h {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(36px, 5vw, 56px);
+            letter-spacing: 0.02em;
+            line-height: 0.95;
+            color: var(--text);
+            margin-bottom: 1rem;
+        }
+
+        /* Section Body */
+        .sec-b {
+            font-size: 15px;
+            color: var(--text-sec);
+            line-height: 1.85;
+            max-width: 580px;
+            margin-bottom: 2.5rem;
+        }
+
+        /* Button Primary */
+        .btn-p {
+            display: inline-block;
+            font-size: 14px;
+            letter-spacing: 0.17em;
+            text-transform: uppercase;
+            font-weight: 500;
+            padding: 15px 38px;
+            border-radius: 2px;
+            text-decoration: none;
+            color: #fff;
+            background: linear-gradient(90deg, var(--ga), var(--gb));
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-p:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(10, 107, 82, 0.15);
+        }
+
+        /* Button Outline */
+        .btn-o {
+            display: inline-block;
+            font-size: 14px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            font-weight: 500;
+            padding: 14px 32px;
+            border-radius: 2px;
+            text-decoration: none;
+            color: var(--text);
+            border: 1px solid var(--border-dk);
+            transition: border-color 0.2s, color 0.2s;
+            cursor: pointer;
+            background: transparent;
+        }
+
+        .btn-o:hover {
+            border-color: var(--ga);
+            background: linear-gradient(90deg, var(--ga), var(--gb), var(--gc));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            color: var(--text);
+            line-height: 1.1;
+            letter-spacing: -0.01em;
+        }
+
+        h1 {
+            font-size: clamp(2.8rem, 8vw, 5rem);
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        h1 span {
+            background: linear-gradient(90deg, var(--ga), var(--gb), var(--gc));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        h2 span {
+            background: linear-gradient(90deg, var(--ga), var(--gb), var(--gc));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            font-family: 'Lora', serif;
+            text-transform: none;
+            letter-spacing: -0.005em;
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-sec);
+            font-family: 'Lora', serif;
+            line-height: 1.7;
+            letter-spacing: -0.005em;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-sec);
+            font-family: 'Lora', serif;
+            line-height: 1.6;
+            letter-spacing: -0.005em;
+        }
+
+        strong, b {
+            font-weight: 600;
+            color: var(--text);
+            font-family: 'Instrument Serif', serif;
+        }
+
+        em, i {
+            font-style: italic;
+            color: var(--text-sec);
+            font-family: 'Instrument Serif', serif;
+        }
+
+        /* Header */
+        header {
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            background: var(--white);
+            z-index: 100;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.15rem;
+            letter-spacing: -0.02em;
+            color: var(--text);
+            text-transform: uppercase;
+            font-weight: 300;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 7rem 0 5rem;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(180deg, var(--white) 0%, var(--accent-lt) 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -300px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(79, 195, 247, 0.06) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -150px;
+            left: -250px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(38, 229, 160, 0.04) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .max-width-prose {
+            max-width: 900px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        section {
+            padding: 6rem 0;
+        }
+
+        .alt {
+            background: var(--white);
+        }
+
+        /* Value Grid */
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .value-item {
+            padding: 2.5rem;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .value-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--ga), var(--gb), var(--gc));
+            pointer-events: none;
+        }
+
+        .value-item h3 {
+            font-size: 1rem;
+            margin-bottom: 1.25rem;
+            color: var(--text);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+        }
+
+        .value-item p {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            color: var(--text-sec);
+        }
+
+        .value-price {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.5rem;
+            background: linear-gradient(90deg, var(--ga), var(--gb), var(--gc));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: none;
+            letter-spacing: 0;
+            margin-top: 0;
+            font-weight: 400;
+            line-height: 1;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .step {
+            position: relative;
+            padding-top: 2rem;
+        }
+
+        .step-number {
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(90deg, var(--ga), var(--gb), var(--gc));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            opacity: 0.4;
+            position: absolute;
+            top: -1rem;
+            left: 0;
+            font-family: 'Bebas Neue', sans-serif;
+        }
+
+        .step h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+            font-family: 'Instrument Serif', serif;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial {
+            padding: 2rem;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+        }
+
+        .testimonial-quote {
+            font-family: 'Lora', serif;
+            font-size: 1.1rem;
+            font-style: italic;
+            color: var(--text-sec);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 0.9rem;
+            background: linear-gradient(90deg, var(--ga), var(--gb), var(--gc));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: -0.01em;
+        }
+
+        /* FAQ */
+        .faq-item {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--text);
+            cursor: pointer;
+        }
+
+        .faq-answer {
+            font-size: 1rem;
+            color: var(--text-sec);
+            margin-top: 1rem;
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text);
+            color: var(--white);
+            padding: 2rem 0;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-section {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        footer p {
+            color: var(--white);
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        footer a {
+            background: linear-gradient(90deg, var(--ga), var(--gb), var(--gc));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        footer a:hover {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-section {
+                flex-direction: column;
+                width: 100%;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            section {
+                padding: 3rem 0;
+            }
+
+            .sec-h {
+                font-size: clamp(28px, 5vw, 36px);
+            }
+
+            .btn-p, .btn-o {
+                padding: 12px 28px;
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">The Divine</div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1><span>LAUNCH</span> your first digital product in 90 minutes.</h1>
+                <p class="subtitle"><strong>No design experience.</strong> <em>Class is in session.</em> You'll get clarity, speed, and a finished product you can sell.</p>
+                <a href="https://the-divine-exp.beehiiv.com/subscribe" class="btn-p">Get Access</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hero Image -->
+    <section style="padding: 0;">
+        <img src="hero.jpg" alt="Workshop in action" style="width: 100%; height: auto; display: block;">
+    </section>
+
+    <!-- Inside the Workshop -->
+    <section>
+        <div class="container max-width-prose">
+            <h2 class="text-center">Inside the <span>Workshop</span></h2>
+            
+            <div class="value-grid">
+                <div class="value-item">
+                    <div class="value-price">$200</div>
+                    <h3>90-Minute Live Session</h3>
+                    <p><strong>Clarity phase. Build phase. Launch phase.</strong> Everything you need to go from idea to finished product. <em>Recorded for replay.</em></p>
+                </div>
+
+                <div class="value-item">
+                    <div class="value-price">$225</div>
+                    <h3>Done-For-You Templates</h3>
+                    <p><strong>Canva template (fully customizable). Email sequences (copy-paste).</strong> Everything done for you. <em>Just add your words.</em></p>
+                </div>
+
+                <div class="value-item">
+                    <div class="value-price">$300</div>
+                    <h3>AI System + Strategy</h3>
+                    <p><strong>Claude prompts that build your product.</strong> Exact positioning. Pricing. Timeline. <em>The system we use every launch.</em></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="alt">
+        <div class="container">
+            <h2 class="text-center">How It <span>Works</span></h2>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; margin-bottom: 3rem;">
+                <div class="how-it-works">
+                    <div class="step">
+                        <div class="step-number">01</div>
+                        <h3>Stop Overthinking</h3>
+                        <p>You'll answer three questions and suddenly everything makes sense. No more months of planning. No more second-guessing yourself.</p>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">02</div>
+                        <h3>Actually Build It</h3>
+                        <p>You customize a template that already works. No blank page. No design paralysis. You have a finished product in 50 minutes.</p>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">03</div>
+                        <h3>Make the First Sale</h3>
+                        <p>You have the exact emails to send, the words to use, the price to charge. You know when to launch and how. Then you sell it.</p>
+                    </div>
+                </div>
+
+                <div>
+                    <img src="how-it-works.png" alt="How It Works Process" style="width: 100%; height: auto; border-radius: 4px;">
+                </div>
+            </div>
+
+            <div style="text-align: center;">
+                <a href="https://the-divine-exp.beehiiv.com/subscribe" class="btn-p">Join the Waitlist</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Real Results / Testimonials -->
+    <section>
+        <div class="container">
+            <h2 class="text-center">Real <span>Results</span></h2>
+            
+            <div class="testimonials">
+                <div class="testimonial">
+                    <div class="testimonial-quote">I came in overwhelmed. The Divine Experience made the entire process seamless. They treated my goals like their own. The final product exceeded every expectation.</div>
+                    <div class="testimonial-author">Business Owner</div>
+                </div>
+
+                <div class="testimonial">
+                    <div class="testimonial-quote">What sets them apart is they actually listen. They understood exactly what we needed and delivered precisely. But they were genuinely invested in our success. That changed everything.</div>
+                    <div class="testimonial-author">Executive Client</div>
+                </div>
+
+                <div class="testimonial">
+                    <div class="testimonial-quote">They took a process that felt impossible and made it real. Professional, creative, detail-oriented—but what really matters: they treated this like their own business. That's the partner you need.</div>
+                    <div class="testimonial-author">Satisfied Client</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Work -->
+    <section class="alt">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
+                <img src="project-1.png" alt="Project 1" style="width: 100%; height: auto; object-fit: cover; border-radius: 4px;">
+                <img src="project-2.png" alt="Project 2" style="width: 100%; height: auto; object-fit: cover; border-radius: 4px;">
+            </div>
+        </div>
+    </section>
+
+    <!-- Questions Answered -->
+    <section class="alt">
+        <div class="container max-width-prose">
+            <h2 class="text-center">Questions <span>Answered</span></h2>
+            
+            <div class="faq">
+                <div class="faq-item">
+                    <div class="faq-question">Do I need design experience?</div>
+                    <div class="faq-answer">No. We walk you through customizing it. You don't need to know Photoshop or design—just be able to follow simple steps.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">What if I can't make the live session?</div>
+                    <div class="faq-answer">We record everything. You get the replay forever. Watch it at your pace, anytime. The only thing you'll miss is the live Q&A, but all the core content is the same.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">How long does it actually take to build?</div>
+                    <div class="faq-answer">In the workshop, we compress it to 90 minutes. In real life, you might spend 4-6 hours spread over a few days. But the system cuts months of planning down to days of action.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Will anyone actually buy it?</div>
+                    <div class="faq-answer">That depends on your audience and how you position it. We teach you exactly how to position and price. The system works—execution matters. We give you both.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Questions Image -->
+    <section style="padding: 0;">
+        <img src="questions.png" alt="Questions Answered" style="width: 100%; height: auto; display: block;">
+    </section>
+
+    <!-- Final CTA -->
+    <section>
+        <div class="container text-center">
+            <h2>Time to <span>Launch</span></h2>
+            <p class="subtitle">Live workshop. 90 minutes. Finished product.</p>
+            <a href="https://the-divine-exp.beehiiv.com/subscribe" class="btn-p">Get Access</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <p><a href="mailto:contact@thedivineexp.com">contact@thedivineexp.com</a></p>
+                <p><a href="https://instagram.com/thedivineexp" target="_blank">@thedivineexp</a></p>
+            </div>
+            <p>&copy; 2026 The Divine Experience</p>
+        </div>
+    </footer>
+
+</body>
+</html>
